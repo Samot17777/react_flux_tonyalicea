@@ -15,6 +15,12 @@ var ForumActions = {
             actionType: ForumConstants.FORUM_ANSWER_ADDED,
             newAnswer: answerText
         });
+    },
+    deleteAnswer: function(id){
+        ForumDispatcher.dispatch({
+            actionType: ForumConstants.FORUM_ANSWER_DELETED,
+            id: id
+        });
     }
     
 };

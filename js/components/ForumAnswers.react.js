@@ -7,6 +7,9 @@ var ForumAnswers = React.createClass({
     _onMarkCorrect: function(id) {
         ForumActions.markAnswerCorrect(id);
     },
+    _onDeleteAnswer: function(id) {
+        ForumActions.deleteAnswer(id);
+    },
     
     render: function() {
 
@@ -14,7 +17,7 @@ var ForumAnswers = React.createClass({
         var answers = [];
 
         for (var key in allAnswers) {
-            answers.push(<ForumAnswer key={key} id={key} answer={allAnswers[key] } onMarkCorrect={ this._onMarkCorrect } />)
+            answers.push(<ForumAnswer key={key} id={key} answer={allAnswers[key] } onMarkCorrect={ this._onMarkCorrect } onDeleteAnswer={this._onDeleteAnswer} />)
         }
 
         return (

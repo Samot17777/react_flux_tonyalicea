@@ -38,6 +38,10 @@ ForumStore.addAnswer = function(newAnswer) {
     };
     this.emitChange();
 };
+ForumStore.deleteAnswer = function (id) {
+    delete answerData[id];
+    this.emitChange();
+}
 
 ForumStore.markAsCorrect = function(id) {
 
@@ -58,6 +62,10 @@ ForumDispatcher.register(function(action) {
         }
         case ForumConstants.FORUM_ANSWER_MARKED_CORRECT: {
             ForumStore.markAsCorrect(action.id);
+            break;
+        }
+        case ForumConstants.FORUM_ANSWER_DELETED: {
+            ForumStore.deleteAnswer(action.id);
             break;
         }
     }

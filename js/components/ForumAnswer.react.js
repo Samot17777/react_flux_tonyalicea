@@ -11,6 +11,10 @@ var ForumAnswer = React.createClass({
         event.preventDefault(); 
         this.props.onMarkCorrect(this.props.id);
     },
+    _deleteAnswer: function(event){
+        event.preventDefault();
+        this.props.onDeleteAnswer(this.props.id);
+    },
 
     render: function() {
  
@@ -19,9 +23,7 @@ var ForumAnswer = React.createClass({
         var markAnswer;
         
         if (!answer.correct) {
-            markAnswer = <div className="pull-right">
-                <small><a href="#" onClick={ this._markCorrect }>Mark as correct</a></small>
-            </div>;
+            markAnswer = <a href="#" className="btn btn-info btn-sm pull-right" onClick={ this._markCorrect }>Mark as correct</a>;
         }
         
         var classNames = "panel-body";
@@ -32,6 +34,9 @@ var ForumAnswer = React.createClass({
             <div className="panel panel-default">
                 <div className={ classNames }>
                     { answer.body }
+                    <a href="#" className="btn btn-danger btn-sm pull-right" onClick={this._deleteAnswer}>
+                        Delete
+                    </a>
                     { markAnswer }
                 </div>
             </div>
